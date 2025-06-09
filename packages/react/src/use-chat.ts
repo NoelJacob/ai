@@ -184,7 +184,7 @@ By default, it's set to 1, which means that only a single LLM call is made.
 
   // Use the caller-supplied ID if available; otherwise, fall back to our stable ID
   const chatId = id ?? hookId;
-  const chatKey = typeof api === 'string' ? [api, chatId] : chatId;
+  const chatKey = chatId;
 
   // Store array of the processed initial messages to avoid re-renders:
   const stableInitialMessages = useStableValue(initialMessages ?? []);
