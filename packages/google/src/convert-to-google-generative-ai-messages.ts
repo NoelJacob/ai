@@ -64,19 +64,20 @@ export function convertToGoogleGenerativeAIMessages(
 
             case 'file': {
               parts.push(
-                part.data instanceof URL
-                  ? {
+                // part.data instanceof URL
+                  // ?
+                {
                       fileData: {
                         mimeType: part.mimeType,
                         fileUri: part.data.toString(),
                       },
                     }
-                  : {
-                      inlineData: {
-                        mimeType: part.mimeType,
-                        data: part.data,
-                      },
-                    },
+                  // : {
+                  //     inlineData: {
+                  //       mimeType: part.mimeType,
+                  //       data: part.data,
+                  //     },
+                  //   },
               );
 
               break;
