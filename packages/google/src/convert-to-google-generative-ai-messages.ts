@@ -43,43 +43,23 @@ export function convertToGoogleGenerativeAIMessages(
             }
 
             case 'image': {
-              parts.push(
-                part.image instanceof URL
-                  ? {
-                      fileData: {
-                        mimeType: part.mimeType ?? 'image/jpeg',
-                        fileUri: part.image.toString(),
-                      },
-                    }
-                  : {
-                      inlineData: {
-                        mimeType: part.mimeType ?? 'image/jpeg',
-                        data: convertUint8ArrayToBase64(part.image),
-                      },
-                    },
-              );
+              parts.push({
+                fileData: {
+                  mimeType: part.mimeType ?? 'image/jpeg',
+                  fileUri: part.image.toString(),
+                },
+              });
 
               break;
             }
 
             case 'file': {
-              parts.push(
-                // part.data instanceof URL
-                  // ?
-                {
-                      fileData: {
-                        mimeType: part.mimeType,
-                        fileUri: part.data.toString(),
-                      },
-                    }
-                  // : {
-                  //     inlineData: {
-                  //       mimeType: part.mimeType,
-                  //       data: part.data,
-                  //     },
-                  //   },
-              );
-
+              parts.push({
+                fileData: {
+                  mimeType: part.mimeType,
+                  fileUri: part.data.toString(),
+                },
+              });
               break;
             }
           }
@@ -119,9 +99,9 @@ export function convertToGoogleGenerativeAIMessages(
                   }
 
                   return {
-                    inlineData: {
+                    fileData: {
                       mimeType: part.mimeType,
-                      data: part.data,
+                      fileUri: part.data,
                     },
                   };
                 }
